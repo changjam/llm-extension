@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Just+Another+Hand&family=RocknRoll+One&display=swap');
+
+*{
+    font-family: 'RocknRoll One', 'Noto Sans TC', sans-serif;
+    padding: 0;
+    margin: 0;
+    --white: rgb(255, 255, 255);
+    --black: rgb(0, 0, 0);
+    --black-mask: rgba(0, 0, 0, 0.917);
+    --pretty-black: rgb(24, 26, 30);
+    --light-gray: rgb(238, 238, 238);
+    --gray: rgb(170, 170, 170);
+    --dark-gray: rgb(98, 98, 98);
+    --blue:rgb(71, 126, 227);
+    --dark-blue: rgb(35, 35, 59);
+    --light-blue: rgb(218, 237, 255);
+    --red: rgb(211, 47, 47);
+    --dark-red: rgb(77, 39, 39);
+    --light-red: rgb(254, 205, 211);
+    --pink: rgb(240, 165, 206);
+    --yellow: rgb(251, 192, 45);
+    --dark-yellow: rgb(97, 83, 49);
+    --light-yellow: rgb(255, 242, 198);
+    --purple: #9080ea;
+    --dark-purple: rgb(64, 0, 64);
+    --light-purple: rgb(204, 153, 255);
+    --orange: rgb(255, 120, 71);
+    --dark-orange: rgb(140, 86, 0);
+    --light-orange: rgb(255, 215, 165);
+
+    --shadow1: 3px 0 5px 0 rgba(0, 0, 0, 0.14);
+    --shadow2: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+
+    --font-size0: 14px;
+    --font-size1: 16px;
+    --font-size2: 20px;
+    --font-size3: 24px;
+    --font-size4: 32px;
+
+    --radius1: 5px;
+    --radius2: 10px;
+    --radius3: 15px;
+}
+
+
+
+body{
+    width: 400px;
+}
+body::-webkit-scrollbar {
+    width: 4px;
+}
+body::-webkit-scrollbar-track {
+    background: var(--blue);
+}
+body::-webkit-scrollbar-thumb {
+    background-color: var(--light-blue);
+}
+
+input{
+    box-sizing: border-box;
+    font-size: var(--font-size0);
+    border: none;
+
+}
+input:focus{
+    outline: none;
+}
+
+/* Scrollbar Setting */
+.content::-webkit-scrollbar {
+    width: 4px;
+}
+.content::-webkit-scrollbar-track {
+    background: var(--blue);
+}
+.content::-webkit-scrollbar-thumb {
+    background-color: var(--light-blue);
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: var(--pretty-black);
+    color: var(--white);
+    position: relative;
+}
+
+.open_setting_btn_container{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 10;
+}
+
+.open_setting_btn_container .openSettingBtn{
+    width: 25px;
+    border-radius: 20%;
+    background-color: var(--white);
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.open_setting_btn_container .openSettingBtn:hover{
+    cursor: pointer;
+}
+
+.setting{
+    display: none;
+    position: absolute;
+    background-color: var(--black-mask);
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.setting h3{
+    font-size: var(--font-size2);
+    margin: 4px 0;
+}
+
+.setting input{
+    padding: 0 8px;
+    width: 90%;
+    height: 30px;
+    border-radius: var(--radius2);
+    margin: 10px 0;
+}
+
+/* select element section */
+.select_element_section{
+    box-sizing: border-box;
+    width: 100%;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.select_element_section .select_content_wrapper{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.select_element_section .select_content_wrapper h3{
+    font-size: var(--font-size2);
+    margin: 4px 0;
+}
+.select_element_section .select_content_wrapper .content{
+    font-size: var(--font-size1);
+    margin-top: 4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+    overflow-y: scroll;
+}
+
+.select_element_section .select_query_input{
+    padding: 0 8px;
+    width: 90%;
+    height: 20%;
+    border-radius: var(--radius2);
+    margin-bottom: 10px;
+}
+
+.select_element_section .btn_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+}
+.select_element_section .btn_container button{
+    width: 50%;
+    height: auto;
+    font-size: var(--font-size1);
+    font-weight: 700;
+    line-height: 25px;
+    margin: 0 10px;
+    border-radius: var(--radius1);
+    background: var(--pretty-black);
+}
+
+.btn_container #element_selector{
+    color: var(--purple);
+    border: 2px solid var(--purple);
+}
+.btn_container #element_selector:hover{
+    cursor: pointer;
+    background-color: var(--purple);
+    color: var(--white);
+}
+.btn_container #hight_light{
+    color: var(--orange);
+    border: 2px solid var(--orange);
+}
+.btn_container #hight_light:hover{
+    cursor: pointer;
+    border: 2px dashed var(--orange);
+    background-color: var(--orange);
+    color: var(--white);
+}
+
+
+
+/* response section */
+.response_section{
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 300px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.response_section h3{
+    font-size: var(--font-size2);
+    margin: 4px 0;
+}
+
+.response_section .content{
+    margin-top: 4px;
+    font-size: var(--font-size1);
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+    overflow-y: scroll;
+}
+
+/* send message section */
+.send_message_section{
+    width: 100%;
+    height: 100px;
+    margin: 4px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.send_message_section .messageInput{
+    padding: 0 8px;
+    width: 90%;
+    height: 40%;
+    border-radius: var(--radius2);
+    margin-bottom: 10px;
+}
+.send_message_section .btn_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60%;
+}
+.send_message_section .btn_container button{
+    width: 50%;
+    height: auto;
+    font-size: var(--font-size1);
+    font-weight: 700;
+    line-height: 25px;
+    margin: 0 10px;
+    border-radius: var(--radius1);
+    background: var(--pretty-black);
+}
+.btn_container #sendMessageBtn{
+    color: var(--purple);
+    border: 2px solid var(--purple);
+}
+.btn_container #sendMessageBtn:hover{
+    cursor: pointer;
+    background-color: var(--purple);
+    color: var(--white);
+}
+.btn_container #ClearBtn{
+    color: var(--orange);
+    border: 2px solid var(--orange);
+}
+.btn_container #ClearBtn:hover{
+    cursor: pointer;
+    border: 2px dashed var(--orange);
+    background-color: var(--orange);
+    color: var(--white);
+}

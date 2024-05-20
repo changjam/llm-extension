@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Groq Extension</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="container">
+
+    <div class="open_setting_btn_container">
+      <button id="openSettingBtn" class="openSettingBtn" title="Open Setting">
+        <img src="setting.webp" alt="" width="100%" height="100%">
+      </button>
+    </div>
+    <div class="setting" id="setting">
+      <h3>Setting</h3>
+      <input type="password" class="api_key_input" id="api_key_input" placeholder="Enter API Key">
+      <input type="text" class="model_name_input" id="model_name_input" placeholder="Enter Model Name">
+      <input type="text" class="system_prompt_input" id="system_prompt_input" placeholder="Enter System Prompt">
+    </div>
+
+    <div class="select_element_section">
+      <div class="select_content_wrapper">
+        <h3>Select Content</h3>
+        <div style="width: 90%; border-bottom:1px solid rgb(91, 90, 90)"></div>
+        <div id="select_content" class="content">預設是輸入body</div>
+      </div>
+      <input id="select_query_input" class="select_query_input" type="text" placeholder="Search Query">
+      <div class="btn_container">
+        <button id="element_selector" title="Select element you want to track.">Selector</button>
+        <button id="hight_light">Hight light</button>
+      </div>
+    </div>
+
+    <div class="response_section">
+      <h3>Response</h3>
+      <div style="width: 90%; border-bottom:1px solid rgb(91, 90, 90)"></div>
+      <div id="response_content" class="content"></div>
+    </div>
+
+    <div class="send_message_section">
+      <input type="text" id="messageInput" class="messageInput" placeholder="Ask Something...">
+      <div class="btn_container">
+        <button id="sendMessageBtn" class="sendMessageBtn">Generate</button>
+        <button id="ClearBtn" class="ClearBtn">Clear</button>
+      </div>
+    </div>
+
+  </div>
+  
+  <script type="module" src="index.js"></script>
+</body>
+</html>

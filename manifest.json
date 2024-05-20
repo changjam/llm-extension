@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "name": "Groq Extension",
+    "version": "1.0",
+    "description": "Send message to Groq API and display completion",
+    "permissions": [
+      "scripting", 
+      "activeTab",
+      "tabs",
+      "storage"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup/index.html"
+    },
+    "content_scripts": [  
+    {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+    }]
+}
