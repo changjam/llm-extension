@@ -6,7 +6,7 @@ export async function executeScript(tabID, func, args) {
    })
 }
 
-export async function sendMessageToTabs(task_name, data) {
+export async function sendMessageToTabs(task_name, data = "") {
    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true});
    return await chrome.tabs.sendMessage(tab.id, {task: task_name, data: data});
 }

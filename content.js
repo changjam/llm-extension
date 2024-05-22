@@ -1,3 +1,7 @@
+function getLocalStorageData(query){
+    return localStorage.getItem(query) || null;
+}
+
 function crawler(query) {
     const target_element = document.querySelector(query);
     if (target_element) {
@@ -64,36 +68,6 @@ function SelectElement() {
 }
 
 
-// function SelectElement() {
-//     let original_style;
-//     let select_element;
-
-//     function mouse_over(event) {
-//         original_style = event.target.style.cssText;
-//         event.target.style.cssText = 'border:1px solid red !important;';
-//     }
-
-//     function mouse_out(event) {
-//         event.target.style.cssText = original_style;
-//     }
-
-//     function on_mouse_down(event) {
-//         select_element = event.target;
-//         select_element.style.cssText = original_style;
-//         select_element.onclick = (e) => { e.preventDefault(); };
-//         removeEventListener("mouseover", mouse_over);
-//         removeEventListener("mouseout", mouse_out);
-//         removeEventListener("mousedown", on_mouse_down);
-
-//         console.log(event.target.query);
-//     }
-
-//     addEventListener("mouseover", mouse_over);
-//     addEventListener("mouseout", mouse_out);
-//     addEventListener("mousedown", on_mouse_down);
-// }
-
-
 chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     console.log("get_request:". request);
     if(request.task === "get_reference_data"){
@@ -101,6 +75,10 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
         sendResponse({result});
     }else if(request.task === "select_element"){
         SelectElement();
+    }else if(request.task === "get_local_storage_data"){
+        sendResponse(getLocalStorageData(request.data));
+    }else if(request.task === "clear_local_storage_data"){
+        localStorage.clear(request.data);
     }
     return true;
 });

@@ -46,15 +46,7 @@
 
 body{
     width: 400px;
-}
-body::-webkit-scrollbar {
-    width: 4px;
-}
-body::-webkit-scrollbar-track {
-    background: var(--blue);
-}
-body::-webkit-scrollbar-thumb {
-    background-color: var(--light-blue);
+    height: 100%;
 }
 
 input{
@@ -79,8 +71,7 @@ input:focus{
 }
 
 .container{
-    width: 100%;
-    height: 100%;
+    width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -89,6 +80,16 @@ input:focus{
     background: var(--pretty-black);
     color: var(--white);
     position: relative;
+}
+
+body::-webkit-scrollbar {
+    width: 4px;
+}
+body::-webkit-scrollbar-track {
+    background: var(--blue);
+}
+body::-webkit-scrollbar-thumb {
+    background-color: var(--light-blue);
 }
 
 .open_setting_btn_container{
@@ -134,44 +135,59 @@ input:focus{
     margin: 10px 0;
 }
 
+
 /* select element section */
 .select_element_section{
     box-sizing: border-box;
     width: 100%;
-    height: 180px;
+    max-height: 600px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.select_element_section .select_content_wrapper{
+.select_element_section .title{
     width: 100%;
-    height: 60%;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.select_element_section .select_content_wrapper h3{
+.select_element_section .title h3{
     font-size: var(--font-size2);
     margin: 4px 0;
 }
+
+.select_element_section .select_content_wrapper{
+    width: 100%;
+    max-height: 450px;
+    min-height: 30px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
 .select_element_section .select_content_wrapper .content{
     font-size: var(--font-size1);
-    margin-top: 4px;
     width: 100%;
     height: 100%;
-    box-sizing: border-box;
     padding: 0 10px;
     overflow-y: scroll;
+    word-wrap: break-word;
+    box-sizing: border-box;
 }
 
 .select_element_section .select_query_input{
     padding: 0 8px;
     width: 90%;
-    height: 20%;
+    height: 40px;
     border-radius: var(--radius2);
-    margin-bottom: 10px;
+    margin: 10px;
 }
 
 .select_element_section .btn_container{
@@ -179,33 +195,33 @@ input:focus{
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 20%;
+    height: 40px;
 }
+
 .select_element_section .btn_container button{
-    width: 50%;
-    height: auto;
+    width: 100%;
+    height: 100%;
     font-size: var(--font-size1);
     font-weight: 700;
-    line-height: 25px;
     margin: 0 10px;
     border-radius: var(--radius1);
     background: var(--pretty-black);
 }
 
-.btn_container #element_selector{
+.btn_container #elementSelectorBtn{
     color: var(--purple);
     border: 2px solid var(--purple);
 }
-.btn_container #element_selector:hover{
+.btn_container #elementSelectorBtn:hover{
     cursor: pointer;
     background-color: var(--purple);
     color: var(--white);
 }
-.btn_container #hight_light{
+.btn_container #clearSelectorBtn{
     color: var(--orange);
     border: 2px solid var(--orange);
 }
-.btn_container #hight_light:hover{
+.btn_container #clearSelectorBtn:hover{
     cursor: pointer;
     border: 2px dashed var(--orange);
     background-color: var(--orange);
@@ -218,63 +234,73 @@ input:focus{
 .response_section{
     box-sizing: border-box;
     width: 100%;
-    max-height: 300px;
+    max-height: 600px;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
-.response_section h3{
+.response_section .title{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.response_section .title h3{
     font-size: var(--font-size2);
     margin: 4px 0;
 }
 
-.response_section .content{
-    margin-top: 4px;
+.response_section .response_content_wrapper{
+    width: 100%;
+    max-height: 450px;
+    min-height: 30px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+.response_section .response_content_wrapper .content{
     font-size: var(--font-size1);
     width: 100%;
     height: 100%;
-    box-sizing: border-box;
     padding: 0 10px;
     overflow-y: scroll;
+    word-wrap: break-word;
+    box-sizing: border-box;
 }
 
-/* send message section */
-.send_message_section{
-    width: 100%;
-    height: 100px;
-    margin: 4px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.send_message_section .messageInput{
+.response_section .messageInput{
     padding: 0 8px;
     width: 90%;
-    height: 40%;
+    height: 40px;
     border-radius: var(--radius2);
-    margin-bottom: 10px;
+    margin: 10px;
 }
-.send_message_section .btn_container{
+
+.response_section .btn_container{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 60%;
+    height: 40px;
 }
-.send_message_section .btn_container button{
-    width: 50%;
-    height: auto;
+
+.response_section .btn_container button{
+    width: 100%;
+    height: 100%;
     font-size: var(--font-size1);
     font-weight: 700;
-    line-height: 25px;
     margin: 0 10px;
     border-radius: var(--radius1);
     background: var(--pretty-black);
 }
+
 .btn_container #sendMessageBtn{
     color: var(--purple);
     border: 2px solid var(--purple);
