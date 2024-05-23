@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Groq Extension",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Send message to Groq API and display completion",
     "permissions": [
       "activeTab",
@@ -12,11 +12,21 @@
       "service_worker": "background.js"
     },
     "action": {
-      "default_popup": "popup/index.html"
+      "default_popup": "popup/index.html",
+      "default_icon": {
+          "16": "images/16x16.png",
+          "48": "images/48x48.png",
+          "128": "images/128x128.png"
+      }
     },
     "content_scripts": [  
     {
         "matches": ["<all_urls>"],
         "js": ["content.js"]
-    }]
+    }],
+    "icons": {
+      "16": "images/16x16.png",
+      "48": "images/48x48.png",
+      "128": "images/128x128.png"
+  }
 }
