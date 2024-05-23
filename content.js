@@ -3,6 +3,7 @@ function getLocalStorageData(query){
 }
 
 function crawler(query) {
+    if (query == null) return;
     const target_element = document.querySelector(query);
     if (target_element) {
         return target_element.innerText;
@@ -77,6 +78,10 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
         SelectElement();
     }else if(request.task === "get_local_storage_data"){
         sendResponse(getLocalStorageData(request.data));
+    }else if(request.task === "search_element"){
+        const result = crawler(request.data);
+        localStorage.setItem('searchQuery', request.data);
+        sendResponse({result});
     }else if(request.task === "clear_local_storage_data"){
         localStorage.clear(request.data);
     }

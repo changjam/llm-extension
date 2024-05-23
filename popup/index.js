@@ -11,6 +11,7 @@ const model_name_input = document.getElementById("model_name_input");
 
 // select element
 const select_content = document.getElementById("select_content");
+const searchBtn = document.getElementById("searchBtn");
 const select_query_input = document.getElementById("select_query_input");
 const elementSelectorBtn = document.getElementById("elementSelectorBtn");
 const clearSelectorBtn = document.getElementById("clearSelectorBtn");
@@ -29,13 +30,27 @@ openSettingBtn.addEventListener("click", () => {
     setting.style.display = display;
 })
 
+searchBtn.addEventListener("click", async ()=>{
+    const search_query = select_query_input.value;
+    if (search_query === "" || search_query === null) {
+        select_content.innerText = "請輸入查詢條件";
+        return;
+    }
+    const response = await sendMessageToTabs("search_element", search_query);
+    if (response === "" || response === null){
+        select_content.innerText = "查詢不到相關資料";
+        return;
+    }
+    select_content.innerText = response["result"];
+});
+
 elementSelectorBtn.addEventListener("click", async ()=>{
     await sendMessageToTabs("select_element");
 });
 
 clearSelectorBtn.addEventListener("click", async ()=>{
     select_query_input.value = "body";
-    select_content.value = "";
+    select_content.innerText = "";
     await sendMessageToTabs("clear_local_storage_data", "selectedQuery");
 });
 

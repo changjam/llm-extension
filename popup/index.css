@@ -207,7 +207,15 @@ body::-webkit-scrollbar-thumb {
     border-radius: var(--radius1);
     background: var(--pretty-black);
 }
-
+.btn_container #searchBtn{
+    color: var(--blue);
+    border: 2px solid var(--blue);
+}
+.btn_container #searchBtn:hover{
+    cursor: pointer;
+    background-color: var(--blue);
+    color: var(--white);
+}
 .btn_container #elementSelectorBtn{
     color: var(--purple);
     border: 2px solid var(--purple);
@@ -240,6 +248,7 @@ body::-webkit-scrollbar-thumb {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 .response_section .title{
     width: 100%;
@@ -289,6 +298,7 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     width: 100%;
     height: 40px;
+    margin-bottom: 10px;
 }
 
 .response_section .btn_container button{
@@ -302,10 +312,19 @@ body::-webkit-scrollbar-thumb {
 }
 
 .btn_container #sendMessageBtn{
+    color: var(--blue);
+    border: 2px solid var(--blue);
+}
+.btn_container #sendMessageBtn:hover{
+    cursor: pointer;
+    background-color: var(--blue);
+    color: var(--white);
+}
+.btn_container #copyBtn{
     color: var(--purple);
     border: 2px solid var(--purple);
 }
-.btn_container #sendMessageBtn:hover{
+.btn_container #copyBtn:hover{
     cursor: pointer;
     background-color: var(--purple);
     color: var(--white);
