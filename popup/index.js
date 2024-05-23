@@ -20,7 +20,8 @@ const clearSelectorBtn = document.getElementById("clearSelectorBtn");
 const responseContent = document.getElementById("response_content");
 const messageInput = document.getElementById("messageInput");
 const sendMessageBtn = document.getElementById("sendMessageBtn");
-const ClearBtn = document.getElementById("ClearBtn");
+const copyBtn = document.getElementById("copyBtn");
+const clearBtn = document.getElementById("clearBtn");
 
 
 let isSettingOpen = false;
@@ -33,15 +34,15 @@ openSettingBtn.addEventListener("click", () => {
 searchBtn.addEventListener("click", async ()=>{
     const search_query = select_query_input.value;
     if (search_query === "" || search_query === null) {
-        select_content.innerText = "請輸入查詢條件";
+        select_content.textContent = "請輸入查詢條件";
         return;
     }
     const response = await sendMessageToTabs("search_element", search_query);
     if (response === "" || response === null){
-        select_content.innerText = "查詢不到相關資料";
+        select_content.textContent = "查詢不到相關資料";
         return;
     }
-    select_content.innerText = response["result"];
+    select_content.textContent = response["result"];
 });
 
 elementSelectorBtn.addEventListener("click", async ()=>{
@@ -49,25 +50,25 @@ elementSelectorBtn.addEventListener("click", async ()=>{
 });
 
 clearSelectorBtn.addEventListener("click", async ()=>{
-    select_query_input.value = "body";
-    select_content.innerText = "";
+    select_query_input.value = "";
+    select_content.textContent = "";
     await sendMessageToTabs("clear_local_storage_data", "selectedQuery");
 });
 
 // generate response
 sendMessageBtn.addEventListener("click", async () => {
-    responseContent.innerText = "\nGenerating response...\n\n";
+    responseContent.textContent = "\nGenerating response...\n\n";
     const search_query = select_query_input.value;
     
     if (search_query === "" || search_query === null) {
-        responseContent.innerText = "Error: 請輸入查詢條件";
+        responseContent.textContent = "Error: 請輸入查詢條件";
         return;
     }
     
     const response = await sendMessageToTabs("get_reference_data", search_query);
     const reference_data = response["result"];
     if (reference_data === "" || reference_data === null){
-        responseContent.innerText = "Error: 查詢不到相關資料";
+        responseContent.textContent = "Error: 查詢不到相關資料";
         return;
     }
     
@@ -77,12 +78,26 @@ sendMessageBtn.addEventListener("click", async () => {
 
     const user_prompt = "請參考給你的資料，回答以下問題:\n" + user_question + "\n\n參考資料:\n" + reference_data;
     const model_response = await LLM(system_prompt_input.value, api_key_input.value, user_prompt, model_name_input.value);
-    responseContent.innerText = model_response;
+    responseContent.textContent = model_response;
     chrome.storage.sync.set({ model_response });
 });
 
-ClearBtn.addEventListener("click", (e)=>{
-    responseContent.innerText = "";
+copyBtn.addEventListener('click', async () => {
+    await navigator.clipboard.writeText(responseContent.textContent);
+    
+    const origin_content = copyBtn.textContent;
+
+    copyBtn.textContent = '✅ Copied';
+    copyBtn.setAttribute('disabled', '');
+
+    setTimeout(() => {
+        copyBtn.textContent = origin_content
+        copyBtn.removeAttribute('disabled');
+    }, 1000);
+});
+
+clearBtn.addEventListener("click", (e)=>{
+    responseContent.textContent = "";
     messageInput.value = "";
     chrome.storage.sync.set({ msgInput: "" });
     chrome.storage.sync.set({ model_response: "" });
@@ -115,13 +130,14 @@ model_name_input.addEventListener("input", (e) => {
 
 
 
+
 // get input data from chrome storage
 async function fetchData() {
     let { selectedQuery, msgInput, model_response, api_key, system_prompt, model_name } = await chrome.storage.sync.get(["selectedQuery", "msgInput", "model_response", "api_key", "system_prompt", "model_name"]);
     
     select_query_input.value = selectedQuery || "body";
     messageInput.value = msgInput || "給我這篇文章的摘要";
-    responseContent.innerText = model_response || "";
+    responseContent.textContent = model_response || "";
     api_key_input.value = api_key || "";
     system_prompt_input.value = system_prompt || "你是一個只會說中文的語言模型，回答請使用中文。";
     model_name_input.value = model_name || "llama3-70b-8192";
@@ -132,17 +148,17 @@ async function getLocalStorageData() {
     select_query_input.value = result || select_query_input.value;
 
     if (select_query_input.value === "" || select_query_input.value === null) {
-        select_content.innerText = "請輸入查詢條件";
+        select_content.textContent = "請輸入查詢條件";
         return;
     }
     
     const response = await sendMessageToTabs("get_reference_data", select_query_input.value);
     const reference_data = response["result"];
     if (reference_data === "" || reference_data === null){
-        select_content.innerText = "查詢不到相關資料";
+        select_content.textContent = "查詢不到相關資料";
         return;
     }
-    select_content.innerText = reference_data;
+    select_content.textContent = reference_data;
 }
 
 window.onload = async () => {

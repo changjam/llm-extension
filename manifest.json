@@ -1,10 +1,9 @@
 {
     "manifest_version": 3,
     "name": "Groq Extension",
-    "version": "1.0",
+    "version": "1.0.0",
     "description": "Send message to Groq API and display completion",
     "permissions": [
-      "scripting", 
       "activeTab",
       "tabs",
       "storage"
