@@ -1,6 +1,6 @@
 # LLM Extension with GROQ
 
-![img](images\img1.png)
+![img](./images/img1.png)
 
 ## Setup
 
@@ -19,7 +19,7 @@ Open Chrome and go to the extensions page (chrome://extensions/). Enable develop
 ### 4. Add API Key
 In the extension setting page, enter your API key in the "API Key" field.
 
-![img](images\img2.png)
+![img](./images/img2.png)
 
 ### 5. Start to use
 Hope you enjoy using this extension!
