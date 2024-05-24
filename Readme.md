@@ -10,7 +10,7 @@ To use this extension, you need to have an API KEY from GROQ. You can get an API
 ### 2. Install the Repository
 To install the repository, follow these steps:
 ```
-git clone https://github.com/changjam/llm-extenstion.git
+git clone https://github.com/changjam/llm-extension.git
 ```
 
 ### 3. Add extension to Chrome
