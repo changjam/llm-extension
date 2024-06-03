@@ -1,6 +1,10 @@
 # LLM Extension with GROQ
-
 ![img](./images/img1.png)
+
+## Update Record
+* ### 2024/05/18: Initial release
+
+---
 
 ## Setup
 

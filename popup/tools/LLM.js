@@ -20,6 +20,6 @@ export async function LLM (system_prompt, apiKey, user_prompt, model) {
         return data['choices'][0]['message']['content'];
     }catch(error) {
         console.error("LLM Error:", error);
-        return error;
+        return "Generation Failed.";
     }
 }

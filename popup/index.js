@@ -76,6 +76,16 @@ sendMessageBtn.addEventListener("click", async () => {
     if (user_question === "" || user_question === null)
         return;
 
+    if (api_key_input.value === "" || api_key_input.value === null){
+        responseContent.textContent = "Error: 請輸入 API Key";
+        return;
+    }
+
+    if (model_name_input.value === "" || model_name_input.value === null){
+        responseContent.textContent = "Error: 請輸入 model name";
+        return;
+    }
+
     const user_prompt = "請參考給你的資料，回答以下問題:\n" + user_question + "\n\n參考資料:\n" + reference_data;
     const model_response = await LLM(system_prompt_input.value, api_key_input.value, user_prompt, model_name_input.value);
     responseContent.textContent = model_response;
